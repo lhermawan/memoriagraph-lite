@@ -19,7 +19,7 @@ Build mode: fast
   Learner check: Run Python one-liner to print graph nodes and confirm structured `Problem -> Mitigation -> Solution` entities exist.
   Commit: `feat: add core sqlite graph database engine and sample seeder`
 
-- [ ] **2. Web Cockpit Visualizer, Interactive Graph, and Manual Entry Form**
+- [x] **2. Web Cockpit Visualizer, Interactive Graph, and Manual Entry Form**
   Becomes usable: A running web interface at `http://localhost:8000` with dark-mode cyber styling, Vis-Network physics canvas, search bar, node inspection drawer, and manual "+ Teach Memory" modal form.
   Why now: Delivers the entire human-facing visual experience and manual second-brain training workflow.
   PRD ref: `prd.md > Screens and Layout`, `prd.md > Look and Feel`, `prd.md > Features and Behavior > 1, 2, 3`

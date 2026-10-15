@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MemoriaGraph Lite — Autonomous Agent Memory Hub</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Vis-Network CDN -->
+  <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+</head>
+<body class="cyber-theme">
+  <!-- Top Cockpit Header -->
+  <header class="cockpit-header">
+    <div class="header-left">
+      <div class="brand-badge">
+        <span class="status-indicator live"></span>
+        <span class="brand-title">MEMORIA<span class="accent-text">GRAPH</span></span>
+        <span class="version-tag">v3.1 LITE</span>
+      </div>
+      <div class="stats-badge" id="stats-badge">
+        <span id="node-count">0</span> Nodes · <span id="edge-count">0</span> Rel
+      </div>
+    </div>
+
+    <div class="header-center">
+      <div class="search-box">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="search-input" placeholder="Search problems, mitigations, solutions, tags..." autocomplete="off">
+        <button id="clear-search" class="clear-btn" title="Clear search">&times;</button>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <button id="btn-seed" class="btn btn-secondary">
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        Load Sample Cases
+      </button>
+      <button id="btn-teach" class="btn btn-primary">
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+        + Teach Memory
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Work Surface -->
+  <main class="cockpit-viewport">
+    <!-- Network Canvas Container -->
+    <div id="graph-container" class="graph-canvas"></div>
+
+    <!-- Empty State Overlay -->
+    <div id="empty-state" class="empty-state-overlay hidden">
+      <div class="empty-card">
+        <div class="empty-icon-halo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+        </div>
+        <h2>Cognitive Memory Graph is Ready</h2>
+        <p>No memory episodes are currently stored. Teach your first memory or load sanitized developer cases to see the cognitive triad in action.</p>
+        <div class="empty-actions">
+          <button id="btn-empty-seed" class="btn btn-secondary">Load 3 Sample Cases</button>
+          <button id="btn-empty-teach" class="btn btn-primary">+ Teach First Memory</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Graph Legend Overlay -->
+    <div class="graph-legend">
+      <div class="legend-item"><span class="legend-dot dot-episode"></span> Incident Hub</div>
+      <div class="legend-item"><span class="legend-dot dot-problem"></span> Problem</div>
+      <div class="legend-item"><span class="legend-dot dot-mitigation"></span> Mitigation</div>
+      <div class="legend-item"><span class="legend-dot dot-solution"></span> Solution</div>
+      <div class="legend-item"><span class="legend-dot dot-tag"></span> Shared Tag</div>
+    </div>
+
+    <!-- Right Sidebar Inspector -->
+    <aside id="inspector-drawer" class="inspector-drawer collapsed">
+      <div class="drawer-header">
+        <div class="drawer-title-group">
+          <span class="drawer-badge" id="drawer-node-type">EPISODE</span>
+          <h3 id="drawer-title">Node Details</h3>
+        </div>
+        <button id="drawer-close" class="drawer-close-btn" title="Close drawer">&times;</button>
+      </div>
+
+      <div class="drawer-body">
+        <div class="meta-row">
+          <span class="meta-label">ID:</span>
+          <code id="drawer-id" class="meta-code">-</code>
+          <span class="meta-label">Created:</span>
+          <span id="drawer-date" class="meta-value">-</span>
+        </div>
+
+        <div class="triad-card problem-card">
+          <div class="triad-header">
+            <span class="triad-icon">🔴</span>
+            <h4>Problem Roadblock</h4>
+          </div>
+          <p id="drawer-problem" class="triad-text">-</p>
+        </div>
+
+        <div class="triad-card mitigation-card">
+          <div class="triad-header">
+            <span class="triad-icon">⚡</span>
+            <h4>Mitigation Strategy & Heuristic</h4>
+          </div>
+          <p id="drawer-mitigation" class="triad-text">-</p>
+        </div>
+
+        <div class="triad-card solution-card">
+          <div class="triad-header">
+            <span class="triad-icon">✅</span>
+            <h4>Verified Solution</h4>
+          </div>
+          <div class="solution-content">
+            <pre><code id="drawer-solution">-</code></pre>
+          </div>
+        </div>
+
+        <div class="tags-section">
+          <div class="tags-header">Domain Tags</div>
+          <div id="drawer-tags" class="tags-container"></div>
+        </div>
+
+        <div class="drawer-actions">
+          <button id="btn-copy-solution" class="btn btn-outline">Copy Solution</button>
+          <button id="btn-delete-episode" class="btn btn-danger">Delete Memory</button>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Teach Memory Modal -->
+  <div id="modal-teach" class="modal-backdrop hidden">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h3>Teach Memory (Second Brain Training)</h3>
+          <p>Distill a solved problem into a reusable cognitive triad for your AI agent.</p>
+        </div>
+        <button id="modal-close" class="modal-close-btn">&times;</button>
+      </div>
+
+      <form id="form-teach" class="modal-body">
+        <div class="form-group">
+          <label for="input-title">Incident / Decision Title <span class="required">*</span></label>
+          <input type="text" id="input-title" placeholder="e.g. Next.js 14 Server Action CORS block" required>
+        </div>
+
+        <div class="form-group">
+          <label for="input-problem">Problem Roadblock <span class="required">*</span></label>
+          <textarea id="input-problem" rows="3" placeholder="What broke or triggered an error?" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="input-mitigation">Mitigation Heuristic <span class="required">*</span></label>
+          <textarea id="input-mitigation" rows="3" placeholder="What initial troubleshooting steps or mitigation was taken?" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="input-solution">Verified Solution <span class="required">*</span></label>
+          <textarea id="input-solution" rows="3" placeholder="What was the exact code or config fix?" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="input-tags">Domain Tags (comma-separated)</label>
+          <input type="text" id="input-tags" placeholder="e.g. nextjs, cors, auth, api">
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" id="btn-modal-cancel" class="btn btn-outline">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save to Second Brain</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Notification Toast -->
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

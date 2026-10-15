@@ -48,6 +48,9 @@ def init_db(db_path: str = DB_PATH):
         )
         conn.commit()
 
+# Ensure default db initialized
+init_db()
+
 
 def clean_tags(tags_str: str) -> List[str]:
     """Parses and sanitizes comma-separated tags."""
