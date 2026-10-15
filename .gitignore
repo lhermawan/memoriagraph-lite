@@ -1,0 +1,20 @@
+# Devpost Learn - Keep personal learner profile out of public commits
+/devpost/learner-profile.md
+
+# Environment and credentials
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+*.egg-info/
+
+# Node / Web
+node_modules/
+dist/
+.DS_Store
