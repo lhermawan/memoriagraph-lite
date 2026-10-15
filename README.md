@@ -51,9 +51,18 @@ pip install -r requirements.txt
 ```
 
 ### 2. Start the Cockpit
+
+**Linux / macOS:**
 ```bash
 python3 server.py
 ```
+
+**Windows (PowerShell / Command Prompt):**
+```cmd
+py server.py
+# or: python server.py
+```
+
 Open **[http://localhost:8000](http://localhost:8000)** in your browser!
 
 ---
