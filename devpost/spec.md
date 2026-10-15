@@ -57,7 +57,7 @@ Why this shape? Traditional agent setups either dump thousands of tokens of nois
   python3 server.py
   ```
 - **Web Interface:** Open `http://localhost:8000` in any modern web browser.
-- **MCP Integration:** Add to Claude Code or Cursor config:
+- **MCP Integration:** Add to Google Antigravity, Claude Code, or Cursor config:
   ```json
   // Linux / macOS:
   {

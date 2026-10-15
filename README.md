@@ -71,7 +71,7 @@ Open **[http://localhost:8000](http://localhost:8000)** in your browser!
 
 MemoriaGraph Lite ships with a native stdio MCP server in `mcp_server.py`.
 
-### Configuration (Claude Code, Claude Desktop, Cursor)
+### Configuration (Google Antigravity, Claude Code, Cursor, Claude Desktop)
 
 **Linux / macOS:**
 ```json
