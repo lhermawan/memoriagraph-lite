@@ -9,7 +9,7 @@ Build mode: fast
 
 ## Slices
 
-- [ ] **1. Core SQLite Graph Engine and Generic Sample Seeder**
+- [x] **1. Core SQLite Graph Engine and Generic Sample Seeder**
   Becomes usable: A runnable database engine (`database.py` and `sample_data.py`) that initializes SQLite tables, extracts relational graph nodes and edges (`Problem -> Mitigation -> Solution`), and seeds 3 generic developer incidents.
   Why now: Proves the core data model and graph derivation first, providing the persistence layer needed by the web UI and MCP server.
   PRD ref: `prd.md > The Core Journey` (steps 2-3), `prd.md > Features and Behavior > 4. Zero-Friction Sample Cases Loader`

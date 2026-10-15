@@ -13,6 +13,7 @@ __pycache__/
 venv/
 .venv/
 *.egg-info/
+*.db
 
 # Node / Web
 node_modules/
