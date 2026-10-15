@@ -49,6 +49,9 @@ When an agent encounters a similar error in the future, it queries MemoriaGraph 
 ```bash
 git clone https://github.com/lhermawan/memoriagraph-lite.git
 cd memoriagraph-lite
+py -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
