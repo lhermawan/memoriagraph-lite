@@ -29,7 +29,7 @@ Build mode: fast
   Learner check: Open `http://localhost:8000` in browser, click "Load Sample Cases", inspect a node, and submit a new memory via the modal.
   Commit: `feat: implement web visualizer cockpit, graph canvas, and manual entry modal`
 
-- [ ] **3. Dual-Tool Model Context Protocol (MCP) Server for AI Coding Agents**
+- [x] **3. Dual-Tool Model Context Protocol (MCP) Server for AI Coding Agents**
   Becomes usable: Stdio JSON-RPC server (`mcp_server.py`) exposing `memoria_record` and `memoria_recall` so external AI agents (Claude Code, Cursor, Antigravity) can autonomously store and retrieve solutions.
   Why now: Completes the unique kernel and autonomous agent interoperability loop for the hackathon demo.
   PRD ref: `prd.md > Features and Behavior > 5. Model Context Protocol (MCP) Server Interface`
