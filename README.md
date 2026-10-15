@@ -71,8 +71,9 @@ Open **[http://localhost:8000](http://localhost:8000)** in your browser!
 
 MemoriaGraph Lite ships with a native stdio MCP server in `mcp_server.py`.
 
-### A. Claude Desktop / Claude Code
-Add to your `claude_desktop_config.json`:
+### Configuration (Claude Code, Claude Desktop, Cursor)
+
+**Linux / macOS:**
 ```json
 {
   "mcpServers": {
@@ -84,19 +85,20 @@ Add to your `claude_desktop_config.json`:
 }
 ```
 
-### B. Cursor (`.cursor/mcp.json`)
+**Windows:**
 ```json
 {
   "mcpServers": {
     "memoriagraph": {
-      "command": "python3",
-      "args": ["/ABSOLUTE/PATH/TO/memoriagraph-lite/mcp_server.py"]
+      "command": "py",
+      "args": ["C:\\path\\to\\memoriagraph-lite\\mcp_server.py"]
     }
   }
 }
 ```
+*(Tip on Windows: If `py` is not in your global PATH, use `"command": "python"` or the full path to `python.exe`)*
 
-### C. Available MCP Tools
+### Available MCP Tools
 * `memoria_record(title, problem, mitigation, solution, tags)`: Saves a new cognitive triad into the graph database.
 * `memoria_recall(query)`: Searches memory and returns ranked problem/mitigation/solution prompts.
 

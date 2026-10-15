@@ -59,11 +59,22 @@ Why this shape? Traditional agent setups either dump thousands of tokens of nois
 - **Web Interface:** Open `http://localhost:8000` in any modern web browser.
 - **MCP Integration:** Add to Claude Code or Cursor config:
   ```json
+  // Linux / macOS:
   {
     "mcpServers": {
       "memoriagraph": {
         "command": "python3",
         "args": ["/path/to/memoriagraph-lite/mcp_server.py"]
+      }
+    }
+  }
+
+  // Windows:
+  {
+    "mcpServers": {
+      "memoriagraph": {
+        "command": "py",
+        "args": ["C:\\path\\to\\memoriagraph-lite\\mcp_server.py"]
       }
     }
   }
