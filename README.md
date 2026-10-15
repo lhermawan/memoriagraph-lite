@@ -8,6 +8,8 @@
 [![MCP Ready](https://img.shields.io/badge/MCP-Compatible-8b5cf6.svg)](https://modelcontextprotocol.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-emerald.svg)](LICENSE)
 
+![MemoriaGraph Lite Cockpit](screenshot_cockpit.png)
+
 ---
 
 ## 💡 The Core Idea: Solving AI Agent Amnesia
