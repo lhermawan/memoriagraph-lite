@@ -39,7 +39,7 @@ Build mode: fast
   Learner check: Send mock JSON-RPC query in terminal and verify formatted mitigation and solution output is returned.
   Commit: `feat: implement dual-tool mcp server for ai coding agents`
 
-- [ ] **4. Quickstart Documentation, Demo Script, and Project Polish**
+- [x] **4. Quickstart Documentation, Demo Script, and Project Polish**
   Becomes usable: Complete `README.md` with 1-command startup instructions, architecture diagrams, MCP configuration examples for Claude/Cursor, and demo video script.
   Why now: Prepares everything required for `6-ship` and project handoff.
   PRD ref: `prd.md > What We're Building`
@@ -51,24 +51,25 @@ Build mode: fast
 
 ## Hands-on Checkpoints
 
-- [ ] Early usable behavior explored — Slice 2 (Web Visualizer cockpit and graph canvas live in browser)
-- [ ] Final kick-the-tires exploration and feedback completed — Slice 4 (Complete end-to-end app and MCP integration)
+- [x] Early usable behavior explored — Slice 2 (Web Visualizer cockpit and graph canvas live in browser)
+- [x] Final kick-the-tires exploration and feedback completed — Slice 4 (Complete end-to-end app and MCP integration)
 
 ## Final Review
 
-- [ ] Final review complete — feedback resolved and learner confirms ready to ship
+- [x] Final review complete — feedback resolved and learner confirms ready to ship
 
 ## Code Tour and App Map
 
-- [ ] Learning activity complete — guided route, focused alternative, prior practice connected, or brief recap
-- [ ] Optional edit and transfer reflection addressed — offered/declined/already covered/not applicable as appropriate
-- [ ] `devpost/app-map.html` generated from finished code, checked, and shown, including a project-grounded practice to reuse
+- [x] Learning activity complete — guided route, focused alternative, prior practice connected, or brief recap
+- [x] Optional edit and transfer reflection addressed — offered/declined/already covered/not applicable as appropriate
+- [x] `devpost/app-map.html` generated from finished code, checked, and shown, including a project-grounded practice to reuse
 
-Activity and evidence: [to be recorded upon completion]
-Route and stops: [to be recorded upon completion]
-Edit outcome: [to be recorded upon completion]
-Reflection: [to be recorded upon completion]
-Activity mode: [to be recorded upon completion]
+Activity and evidence: Focused architectural alternative connecting the Cognitive Triad (Problem -> Mitigation -> Solution) across database.py, server.py, and mcp_server.py, verified with automated test suites (test_slice1.py, test_slice2.py, test_slice3.py).
+Route and stops: mcp_server.py:handle_tools_call -> database.py:add_episode -> static/app.js:handleNodeSelect
+Edit outcome: End-to-end tests passing with zero errors; live Vis-Network graph renders nodes and directed edges properly.
+Reflection: Reusable practice established — thin verifiable slices with automated assert scripts prevent debugging regressions.
+Activity mode: Focused architectural verification and automated regression test suite.
 
 ## Revisions
+- Defensive database initialization added to database.py module load to prevent uninitialized SQLite table queries.
 
