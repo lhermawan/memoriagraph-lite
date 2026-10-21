@@ -1,11 +1,13 @@
 # 🧠 MemoriaGraph Lite
 
 > **Autonomous Cognitive Memory & Decision Hub for AI Coding Agents**  
-> *Built for Devpost Learn: "Build With AI: Basics" Hackathon*
+> *Built for Devpost Learn: "Build With AI: Basics" Hackathon*  
+> 🏆 **XERJ Corpus Hub Selection:** Selected and indexed into [XERJ Corpus Hub](https://hub.xerj.org/contributors/lhermawan) as an official reference memory corpus for AI coding agents.
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.110%2B-009688.svg)](https://fastapi.tiangolo.com/)
 [![MCP Ready](https://img.shields.io/badge/MCP-Compatible-8b5cf6.svg)](https://modelcontextprotocol.io/)
+[![XERJ Corpus Hub contributor](https://hub.xerj.org/contributors/lhermawan/badge.svg)](https://hub.xerj.org/contributors/lhermawan)
 [![License: MIT](https://img.shields.io/badge/License-MIT-emerald.svg)](LICENSE)
 
 ![MemoriaGraph Lite Cockpit](screenshot_cockpit.png)
